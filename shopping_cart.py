@@ -1,7 +1,9 @@
 # shopping_cart.py
+import datetime
+now=datetime.datetime.now()
 
 products = [
-    {"id":885911661768, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
+    {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
     {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49},
     {"id":4, "name": "Smart Ones Classic Favorites Mini Rigatoni With Vodka Cream Sauce", "department": "frozen", "aisle": "frozen meals", "price": 6.99},
@@ -42,17 +44,35 @@ def to_usd(my_price):
 #print(products)
 
 a=[]
-numb=(input("Please scan the item: "))
+numb=int(input("Please scan the item: "))
 while numb != 0:
-    #if numb.isdigit():
-    #a.append(numb)
-    for item in products:
-       if numb==item["id"]:
-            a.append(item["price"])
-    numb=(input("Please scan the item: "))
-   # else:
+    count=0
+    #valid=type(numb) is int
+    #if valid==False:
     #    numb=input("Hey, are you sure that product identifier is #correct? Please try again!")
+    #else:
+    for item in products:
+        if numb==item["id"]:
+            a.append(item["price"])
+            count=count+1
+    if count==0:
+        numb=int(input("Hey, are you sure that product identifier is #correct? Please try again!"))
+    else:
+        numb=int(input("Please scan the item: "))
 
 
 
-print("Your total is $", sum(a))
+
+
+else: 
+    Sum_prices=to_usd(sum(a)) 
+    print("-------------------") 
+    print("-------------------") 
+    print(now.strftime("%Y-%m-%d %H:%M:%S")) 
+    print("Thank you for shopping at Joe's Market") 
+    print("Your total is $", Sum_prices)
+    #    
+
+
+
+    
