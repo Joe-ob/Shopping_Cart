@@ -44,6 +44,9 @@ def to_usd(my_price):
 #print(products)
 
 a=[]
+b=[]
+c=[]
+receipt={}
 numb=int(input("Please scan the item: "))
 while numb != 0:
     count=0
@@ -54,6 +57,7 @@ while numb != 0:
     for item in products:
         if numb==item["id"]:
             a.append(item["price"])
+            b.append(item["name"])
             count=count+1
     if count==0:
         numb=int(input("Hey, are you sure that product identifier is #correct? Please try again!"))
@@ -65,12 +69,21 @@ while numb != 0:
 
 
 else: 
-    Sum_prices=to_usd(sum(a)) 
     print("-------------------") 
     print("-------------------") 
     print(now.strftime("%Y-%m-%d %H:%M:%S")) 
-    print("Thank you for shopping at Joe's Market") 
-    print("Your total is $", Sum_prices)
+    print("Joe's Market") 
+    print("3700 O Street NW, Washington, DC 20007")
+    print("-------------------") 
+    print("-------------------") 
+    print(b)
+    for item in a:
+        dollar_price=to_usd(item)
+        c.append(dollar_price)
+    for item_b, item_c in zip(b, c):
+        print(item_b, item_c)
+    sum_prices=(sum(a)) 
+    print("Your total is ", sum_prices)
     #    
 
 
