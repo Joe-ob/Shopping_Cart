@@ -76,16 +76,23 @@ else:
     print("3700 O Street NW, Washington, DC 20007")
     print("-------------------") 
     print("-------------------") 
-    print(b)
     for item in a:
         dollar_price=to_usd(item)
         c.append(dollar_price)
     for item_b, item_c in zip(b, c):
         print(item_b, item_c)
     sum_prices=(sum(a)) 
-    print("Your total is ", sum_prices)
+    print("-------------------")
+    print("Your subtotal is ", to_usd(sum_prices))
     #    
+    tax_perc=.0875
+    tax=sum_prices*.0875
+    tax_as_dollars=to_usd(tax)
+    print("Sales Tax: ", tax_as_dollars)
 
-
-
-    
+    Total_Cost=sum_prices+tax
+    print("Your total cost is", to_usd(Total_Cost))
+    print("-------------------")
+    print("Thank you for shopping at Joe's Market, come again!")
+    print("-------------------") 
+    print("-------------------") 
