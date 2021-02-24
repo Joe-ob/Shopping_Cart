@@ -1,15 +1,16 @@
 # shopping_cart.py
+#This will be displayed on the top of the receipt
 import datetime
 now=datetime.datetime.now()
 
+#This downloads the csv file filled with product information
 import pandas as pd
 products_df = pd.read_csv("https://raw.githubusercontent.com/prof-rossetti/intro-to-python/master/data/products.csv")
 
-from pprint import pprint
-print(products_df.columns)
 
+#This part converts the dataframe to a dictionary so the code can process the information easier
 products=products_df.to_dict('records')
-#print(products)
+
 
     # FYI: this wget command is a terminal command, NOT python
     # ... in colab, we can execute terminal commands by prefixing them with an exclamation point
@@ -39,7 +40,7 @@ products=products_df.to_dict('records')
 #    {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 #] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-
+#This part defines the to_usd function, which converts float to currency
 def to_usd(my_price):
     """
     Converts a numeric value to usd-formatted string, for printing and display purposes.
