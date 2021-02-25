@@ -56,57 +56,68 @@ def to_usd(my_price):
 
 # TODO: write some Python code here to produce the desired output
 
-
+#Defining list a, which collects the item's prices
 a=[]
+
+#Definint list b, which collects the item's names
 b=[]
+
+#Defining list c, which collects the item's prices as USD to be displayed
 c=[]
-receipt={}
-numb=int(input("Please scan the item: "))
+
+#Establishes user input and repeats prompt endlessly until the user enters 0
+numb=int(input("Please scan the item or if you are finished, enter '0': "))
 while numb != 0:
     count=0
-    #valid=type(numb) is int
-    #if valid==False:
-    #    numb=input("Hey, are you sure that product identifier is #correct? Please try again!")
-    #else:
     for item in products:
         if numb==item["id"]:
+            #The Append functions saves the items checked out by the user
             a.append(item["price"])
             b.append(item["name"])
             count=count+1
     if count==0:
-        numb=int(input("Hey, are you sure that product identifier is #correct? Please try again!"))
+        numb=int(input("Hey, are you sure that product identifier is correct? Please try again!"))
+        #This if statement makes makes sure you entered a product id that is in the product csv file
     else:
-        numb=int(input("Please scan the item: "))
+        numb=int(input("Please scan the item or if you are finished, enter '0': "))
 
 
+ 
 
-
-
+#This prints the receipt
 else: 
     print("-------------------") 
     print("-------------------") 
+#This calls the imported date/time function
     print(now.strftime("%Y-%m-%d %H:%M:%S")) 
     print("Joe's Market") 
     print("3700 O Street NW, Washington, DC 20007")
+    print("JoesMarket.com")
     print("-------------------") 
-    print("-------------------") 
+    print("-------------------")
+#The for look converts the prices to USD so they can be displayed that way 
     for item in a:
         dollar_price=to_usd(item)
+#I seperate them to list C so I can still do calculations with list A
         c.append(dollar_price)
+#This prints the items bought and their price
     for item_b, item_c in zip(b, c):
         print(item_b, item_c)
+#This calculates the Sum_total
     sum_prices=(sum(a)) 
     print("-------------------")
     print("Your subtotal is ", to_usd(sum_prices))
     #    
+#Since sum_prices is saved as a float, I use it to calculate the total with tax
     tax_perc=.0875
-    tax=sum_prices*.0875
+    tax=sum_prices*tax_perc
     tax_as_dollars=to_usd(tax)
     print("Sales Tax: ", tax_as_dollars)
-
+#Once Sales Tax is calculate, I add it to the subtotal and present the final cost
     Total_Cost=sum_prices+tax
     print("Your total cost is", to_usd(Total_Cost))
     print("-------------------")
+#Thank you message
     print("Thank you for shopping at Joe's Market, come again!")
     print("-------------------") 
     print("-------------------") 
